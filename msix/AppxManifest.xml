@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  AppxManifest TEMPLATE for Escape Reality.
+  Tokens (__IDENTITY_NAME__, __PUBLISHER__, __PUBLISHER_DISPLAY_NAME__,
+  __VERSION__, __ARCHITECTURE__) are replaced from config.psd1 by
+  build-msix.ps1. Do not rename the tokens.
+-->
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  IgnorableNamespaces="desktop rescap uap">
+  <Identity
+    Name="__IDENTITY_NAME__"
+    Publisher="__PUBLISHER__"
+    Version="__VERSION__"
+    ProcessorArchitecture="__ARCHITECTURE__" />
+  <Properties>
+    <DisplayName>Escape Reality</DisplayName>
+    <PublisherDisplayName>__PUBLISHER_DISPLAY_NAME__</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.26100.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="en-US" />
+  </Resources>
+  <Applications>
+    <Application Id="EscapeReality" Executable="EscapeReality.exe" EntryPoint="Windows.FullTrustApplication">
+      <uap:VisualElements
+        DisplayName="Escape Reality"
+        Description="Escape Reality window and page, with bundled model weights, model key, and policy files."
+        BackgroundColor="transparent"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png">
+        <uap:DefaultTile
+          Wide310x150Logo="Assets\Wide310x150Logo.png"
+          Square71x71Logo="Assets\Square71x71Logo.png"
+          Square310x310Logo="Assets\Square310x310Logo.png" />
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <!-- Required for a packaged Win32 (full-trust) app. Sideloading needs
+         Developer Mode enabled (Settings > Privacy & security > For developers). -->
+    <rescap:Capability Name="runFullTrust" />
+    <Capability Name="internetClient" />
+    <!-- The app talks to a local model endpoint (e.g. Ollama on
+         localhost:11434). Packaged apps need this to reach loopback. -->
+    <Capability Name="privateNetworkClientServer" />
+  </Capabilities>
+</Package>
