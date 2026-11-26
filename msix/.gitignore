@@ -1,0 +1,7 @@
+# Build outputs — never commit packages, keys, or staged layouts.
+layout/
+out/
+*.msix
+*.msixbundle
+*.pfx
+*.cer
